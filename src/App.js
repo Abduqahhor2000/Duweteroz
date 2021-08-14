@@ -6,9 +6,10 @@ import { MdDashboard,
          FiSettings,
          BsBell,
          FiSearch,
-         GiHamburgerMenu} from 'react-icons/all';
+         GiHamburgerMenu,
+         FaRegCalendarAlt,
+         SiVisa} from 'react-icons/all';
 import userImg from "./img/user-image.jpg";
-
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
           </div>
           <div className="menu-list">
               <ul>
-                <li className="active-list"><MdDashboard className="menu-icons" /> <span>Dashboard</span></li>
-                <li className=""><BsCreditCard className="menu-icons" /> <span>Balance & Card</span></li>
+                <li className=""><MdDashboard className="menu-icons" /> <span>Dashboard</span></li>
+                <li className="active-list"><BsCreditCard className="menu-icons" /> <span>Balance & Card</span></li>
                 <li className=""><BiHelpCircle className="menu-icons" /> <span>Help & Support</span></li>
                 <li className=""><FiFileText className="menu-icons" /> <span>Invoice</span></li>
                 <li className=""><FiSettings className="menu-icons" /> <span>Setting</span></li>
@@ -64,9 +65,150 @@ function App() {
               </div>
             </div>
           </div>
-          <div>
-  apexcharts
-          </div>
+          <div className="mean-body">
+             <div className="balance-title">
+               <h2>Balance & Card</h2>
+               <p>See your data</p>
+             </div>
+             <div className="data-status">
+              <div className="balance-details">
+                <div className="balance-details-div">
+                  <span>BALANCE DETAILS</span>
+                  <button><FaRegCalendarAlt className="calendar-icon" />18/09/2021</button>
+                </div>
+                <div className="total-balance">
+                  <p>Total balance</p>
+                  <span>$528,182</span>
+                </div>
+                <div className="other-total">
+                  <div>
+                       <p>Last Month</p>
+                       <h3>$342,182</h3>
+                  </div>
+                  <div>
+                       <p>Expenses</p>
+                       <h3>$342,182</h3>
+                  </div>
+                  <div>
+                       <p>Taxes</p>
+                       <h3>$342,182</h3>
+                  </div>
+                  <div>
+                       <p>Debit</p>
+                       <h3>$342,182</h3>
+                  </div>
+                </div>
+              </div>
+              <div className="bills">
+                <div className="bills-div">
+                  <span>BILLS</span>
+                  <button><FaRegCalendarAlt className="calendar-icon" />18/09/2021</button>
+                </div>
+                  <p className="bills-p">You have 56 unpaid bills this month, Pay immediately before it's too late</p>
+                <div className="will-pay">
+                  <div>
+                    <p style={{color: "red"}}>Netflix</p>
+                    <span>$14.00</span>
+                  </div>
+                  <div>
+                    <button>Pay Now</button>
+                  </div>
+                </div>
+                <div className="will-pay">
+                  <div>
+                    <p style={{color: "green"}}>Spotify</p>
+                    <span>$15.00</span>
+                  </div>
+                  <div>
+                    <button>Pay Now</button>
+                  </div>
+                </div>
+                <span>See All Bills</span>
+              </div>
+              <div className="investment">
+                <span>BALANCE DETAILS</span>
+                <div>
+                   <h3>$528,182</h3>
+                   <span>+$621.26 (8.21%)</span>
+                </div> 
+                <div id="chart">
+                </div>    
+              </div>
+             </div>
+             <div className="cards">
+               <h4>YOUR CARDS</h4>
+                <div className="your-cards">
+                  <div className="your-card">
+                    <div>
+                      <p>Debit Card</p> 
+                      <span><SiVisa /></span>
+                    </div>
+                    <div>
+                      <h3>9600 7898 2314 1611</h3>
+                      <p>2878</p>
+                    </div>
+                    <div>
+                      <div>Abduqahhor Norimmatov</div>
+                      <div>
+                       <span>GOOD <br/>THRU</span>
+                       
+                      </div>
+                    </div>
+                  </div>
+                  <div className="your-card">
+                    <div>
+                      <p>Debit Card</p> 
+                      <span><SiVisa /></span>
+                    </div>
+                    <div>
+                      <h3>9600 7898 2314 1611</h3>
+                      <p>2878</p>
+                    </div>
+                    <div>
+                      <div>Abduqahhor Norimmatov</div>
+                      <div>
+                       <span>GOOD <br/>THRU</span>
+                       
+                      </div>
+                    </div>
+                  </div>
+                  <div className="your-card">
+                    <div>
+                      <p>Debit Card</p> 
+                      <span><SiVisa /></span>
+                    </div>
+                    <div>
+                      <h3>9600 7898 2314 1611</h3>
+                      <p>2878</p>
+                    </div>
+                    <div>
+                      <div>Abduqahhor Norimmatov</div>
+                      <div>
+                       <span>GOOD <br/>THRU</span>
+                       
+                      </div>
+                    </div>
+                  </div>
+                  <div className="your-card">
+                    <div>
+                      <p>Debit Card</p> 
+                      <span><SiVisa /></span>
+                    </div>
+                    <div>
+                      <h3>9600 7898 2314 1611</h3>
+                      <p>2878</p>
+                    </div>
+                    <div>
+                      <div>Abduqahhor Norimmatov</div>
+                      <div>
+                       <span>GOOD <br/>THRU</span>
+                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
         </div>
     </div>
   );

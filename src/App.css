@@ -9,7 +9,7 @@
 }
 
 .menu {
-  width: 300px;
+  width: 250px;
   height: 100vh;
   position: fixed;
   background-color: rgb(12, 37, 86);
@@ -60,7 +60,7 @@
   position: relative;
   margin: 0px;
   height: 45px;
-  font-size: 38px;
+  font-size: 32px;
   letter-spacing: 1px;
   left: 30px;
 }
@@ -116,11 +116,9 @@
   width: auto;
   position: relative;
   margin-left: 30px;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 1px;
 }
-
-
 
 .manu-footer{
   position: absolute;
@@ -136,17 +134,6 @@
   font-size: 14px;
 }
 
-.mean {
-  position: relative;
-  top: 0px;
-  left: 300px;
-  width: calc(100% - 300px);
-  height: 100vh;
-  background-color:silver;
-  transition: 0.5s;
-}
-
-
 .free-link{
   display: flex;
   width: 100%;
@@ -158,6 +145,16 @@
 
 .free-link div:hover{
   cursor: pointer;
+}
+
+.mean {
+  position: relative;
+  top: 0px;
+  left: 250px;
+  width: calc(100% - 250px);
+  height: 100vh;
+  background-color: #f8f8fb;
+  transition: 0.5s;
 }
 
 .mean-header{
@@ -265,6 +262,7 @@
 .user-name p:nth-child(1){
   font-weight: 600;
   font-size: 12px;
+  margin-bottom: 3px;
 }
 
 .user-name p:nth-child(2){
@@ -272,7 +270,231 @@
   color: rgb(145, 145, 145);
 }
 
+.mean-body{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
 
+.balance-title{
+  width: 100%;
+  margin: 10px 0 30px 0;
+}
+
+.balance-title h2{
+  font-size: 22px;
+  color: black;
+}
+
+.balance-title p{
+  font-size: 14px;
+  color: #909096;
+}
+
+.data-status{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.balance-details, .bills, .investment{
+  width: 32%;
+  max-width: 420px;
+  min-width: 320px;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  background-color: white;
+  padding: 15px;
+}
+
+.balance-details-div{
+   margin: 5px 0;
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 10px;
+}
+
+.balance-details-div span{
+  color:rgb(84, 84, 86);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.balance-details-div button{
+  display: block;
+  color: blue;
+  font-size: 12px;
+  width: 110px;
+  height: 30px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.calendar-icon{
+  margin-right: 7px;
+}
+
+.total-balance{
+  margin-bottom: 20px;
+}
+
+.total-balance p{
+  font-size: 16px;
+  color:#9197ab;
+  margin-bottom: 2px;
+}
+
+.total-balance span{
+  font-size: 36px;
+  color:black;
+  font-family:monospace, Helvetica, sans-serif, Courier, monospace;
+}
+
+.other-total{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.other-total div{
+  width: 130px;
+  margin-bottom: 20px;
+  margin-right: 50px;
+}
+
+.other-total div p{
+  font-size: 10px;
+  color:#9197ab;
+  margin-bottom: 5px;
+}
+
+.other-total div h3{
+  font-size: 24px;
+  font-weight: 400;
+  font-family: monospace, Helvetica, sans-serif, Courier;
+}
+
+.bills-div{
+  margin: 5px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.bills-div span{
+  color:rgb(84, 84, 86);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.bills-div button{
+  display: block;
+  color: blue;
+  font-size: 12px;
+  width: 110px;
+  height: 30px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.bills-p{
+  color: #9197ab;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.will-pay{
+  max-width: 290px;
+  min-width: 190px;
+  height: 50px;
+  background-color: #f6f9fe;
+  border: 1px solid #7fa9f0;
+  border-radius: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+}
+
+.will-pay div button{
+  background-color: #3478e8;
+  color: white;
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 10px;
+}
+
+.will-pay div span{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.will-pay div p{
+  font-size: 14px;
+}
+
+.bills > span {
+  display: block;
+  width: 85px;
+  color: #3478e8;
+  margin: 0 auto;
+}
+
+.bills > span:hover {
+  cursor: pointer;
+  color: #588ce0;
+}
+
+
+.your-cards{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.your-card{
+  width: 250px;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #126aff;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+}
+
+.your-card > div:nth-child(1){
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.your-card > div > span{
+  position: absolute;
+  display: block;
+  font-size: 50px;
+  top: -16px;
+  right: 0px;
+}
 
 
 @media (max-width: 1200px) {
