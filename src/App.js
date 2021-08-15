@@ -10,6 +10,7 @@ import { MdDashboard,
          FaRegCalendarAlt,
          SiVisa} from 'react-icons/all';
 import userImg from "./img/user-image.jpg";
+import Chart from './containers/chart';
 
 function App() {
   return (
@@ -126,89 +127,98 @@ function App() {
                 <span>See All Bills</span>
               </div>
               <div className="investment">
-                <span>BALANCE DETAILS</span>
-                <div>
+                <span>INVESTMENT</span>
+                <div className="investment-balance">
                    <h3>$528,182</h3>
                    <span>+$621.26 (8.21%)</span>
                 </div> 
                 <div id="chart">
+                  <Chart />
                 </div>    
               </div>
              </div>
              <div className="cards">
                <h4>YOUR CARDS</h4>
                 <div className="your-cards">
-                  <div className="your-card">
+                  <div className="your-card lite-blue">
                     <div>
                       <p>Debit Card</p> 
                       <span><SiVisa /></span>
                     </div>
                     <div>
-                      <h3>9600 7898 2314 1611</h3>
+                      <h3>9600 &nbsp; **** &nbsp; 2314 &nbsp; 1611</h3>
                       <p>2878</p>
                     </div>
                     <div>
-                      <div>Abduqahhor Norimmatov</div>
-                      <div>
+                      <div className="card-name">Abduqahhor Norimmatov</div>
+                      <div className="card-date">
                        <span>GOOD <br/>THRU</span>
-                       
+                       <b>17/27</b>
+                       <span className="visa-logo">
+                       </span>
                       </div>
                     </div>
                   </div>
-                  <div className="your-card">
+                  <div className="your-card dark-blue">
                     <div>
                       <p>Debit Card</p> 
                       <span><SiVisa /></span>
                     </div>
                     <div>
-                      <h3>9600 7898 2314 1611</h3>
+                      <h3>9600 &nbsp; **** &nbsp; 2314 &nbsp; 1611</h3>
                       <p>2878</p>
                     </div>
                     <div>
-                      <div>Abduqahhor Norimmatov</div>
-                      <div>
+                      <div className="card-name">Abduqahhor Norimmatov</div>
+                      <div className="card-date">
                        <span>GOOD <br/>THRU</span>
-                       
+                       <b>17/27</b>
+                       <span className="visa-logo">
+                       </span>
                       </div>
                     </div>
                   </div>
-                  <div className="your-card">
+                  <div className="your-card lite-green">
                     <div>
                       <p>Debit Card</p> 
                       <span><SiVisa /></span>
                     </div>
                     <div>
-                      <h3>9600 7898 2314 1611</h3>
+                      <h3>9600 &nbsp; **** &nbsp; 2314 &nbsp; 1611</h3>
                       <p>2878</p>
                     </div>
                     <div>
-                      <div>Abduqahhor Norimmatov</div>
-                      <div>
+                      <div className="card-name">Abduqahhor Norimmatov</div>
+                      <div className="card-date">
                        <span>GOOD <br/>THRU</span>
-                       
+                       <b>17/27</b>
+                       <span className="visa-logo">
+                       </span>
                       </div>
                     </div>
                   </div>
-                  <div className="your-card">
+                  <div className="your-card lite-red">
                     <div>
                       <p>Debit Card</p> 
                       <span><SiVisa /></span>
                     </div>
                     <div>
-                      <h3>9600 7898 2314 1611</h3>
+                      <h3>9600 &nbsp; **** &nbsp; 2314 &nbsp; 1611</h3>
                       <p>2878</p>
                     </div>
                     <div>
-                      <div>Abduqahhor Norimmatov</div>
-                      <div>
+                      <div className="card-name">Abduqahhor Norimmatov</div>
+                      <div className="card-date">
                        <span>GOOD <br/>THRU</span>
-                       
+                       <b>17/27</b>
+                       <span className="visa-logo">
+                       </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-        </div>
+          </div>
         </div>
     </div>
   );
