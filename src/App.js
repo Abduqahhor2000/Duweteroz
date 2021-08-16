@@ -15,6 +15,7 @@ import routes from './routes';
 function App() {
   return (
     <div className="App">
+      <Router>
         <div className="menu">
           <div className="brand"> 
             <span>
@@ -25,13 +26,11 @@ function App() {
           </div>
           <div className="menu-list">
               <ul>
-                <Router>
-                <Link to="/dashboard"><li className=""><MdDashboard className="menu-icons" /> <span>Dashboard</span></li></Link>
-                <Link to="/balance"><li className="active-list"><BsCreditCard className="menu-icons" /> <span>Balance & Card</span></li></Link>
-                <Link to="/help"><li className=""><BiHelpCircle className="menu-icons" /> <span>Help & Support</span></li></Link>
-                <Link to="/invoice"><li className=""><FiFileText className="menu-icons" /> <span>Invoice</span></li></Link>
-                <Link to="/setting"><li className=""><FiSettings className="menu-icons" /> <span>Setting</span></li></Link>
-                </Router>
+                  <Link className="router-link" to="/dashboard"><li className=""><MdDashboard className="menu-icons" /> <span>Dashboard</span></li></Link>
+                  <Link className="router-link" to="/balance"><li className="active-list"><BsCreditCard className="menu-icons" /> <span>Balance & Card</span></li></Link>
+                  <Link className="router-link" to="/help"><li className=""><BiHelpCircle className="menu-icons" /> <span>Help & Support</span></li></Link>
+                  <Link className="router-link" to="/invoice"><li className=""><FiFileText className="menu-icons" /> <span>Invoice</span></li></Link>
+                  <Link className="router-link" to="/setting"><li className=""><FiSettings className="menu-icons" /> <span>Setting</span></li></Link>
               </ul>
           </div>
           <div className="manu-footer">
@@ -68,7 +67,6 @@ function App() {
               </div>
             </div>
           </div>
-        <Router>
           <Redirect to="/balance" />
           <Switch>
               {routes.menu.map(item => {
@@ -77,8 +75,8 @@ function App() {
                 )
               })}  
           </Switch>
+         </div>
         </Router>
-        </div>
     </div>
   );
 }
