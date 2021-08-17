@@ -45,12 +45,12 @@ const routes = {
             icon: null,
         }
     ],
-    auth: [
+    authAbdu: [
         {
             key: "home",
             path: "/home",
             component: Home,
-            exact: true,
+            exact: false,
             icon: null,
         },
         {

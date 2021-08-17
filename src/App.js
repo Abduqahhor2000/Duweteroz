@@ -1,15 +1,12 @@
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import routes from './routes';
-
-
+import routes from "./routes";
 function App() {
   return (
     <div className="App">
-      salom
-      <Redirect to="/home" />
           <Switch>
-              {routes.auth.map(item => {
+              {routes.authAbdu.map(item => {
                 return(
                   <Route {...item} />
                 )
