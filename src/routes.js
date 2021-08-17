@@ -11,63 +11,63 @@ const routes = {
     menu: [
         {
             key: "dashboard",
-            path: "/home/dashboard",
+            path: "/dashboard",
             component: Dashboard,
             exact: true,
             icon: null,
         },
         {
             key: "balance",
-            path: "/home/balance",
+            path: "/balance",
             component: Balance,
             exact: true,
             icon: null,
         },
         {
             key: "help",
-            path: "/home/help",
+            path: "/help",
             component: Help,
             exact: true,
             icon: null,
         },
         {
             key: "invoice",
-            path: "/home/invoice",
+            path: "/invoice",
             component: Invoice,
             exact: true,
             icon: null,
         },
         {
             key: "setting",
-            path: "/home/setting",
+            path: "/setting",
             component: Setting,
             exact: true,
             icon: null,
         }
     ],
     authAbdu: [
-        {
-            key: "home",
-            path: "/home",
-            component: Home,
-            exact: false,
-            icon: null,
-        },
-        {
-            key: "signin",
-            path: "/sign-in",
-            component: SignIn,
-            exact: true,
-            icon: null,
-        },
-        {
-            key: "signup",
-            path: "/sign-up",
-            component: SignUp,
-            exact: true,
-            icon: null,
-        }
-    ],
+    {
+        key: "signin",
+        path: "/sign-in",
+        component: SignIn,
+        exact: true,
+        icon: null,
+    },
+    {
+        key: "signup",
+        path: "/sign-up",
+        component: SignUp,
+        exact: true,
+        icon: null,
+    },
+    {
+        key: "home",
+        path: ["/", "/home"],
+        component: Home,
+        exact: false,
+        icon: null,
+    }
+],
 }
 
 export default routes;

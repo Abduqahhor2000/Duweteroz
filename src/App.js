@@ -8,7 +8,7 @@ function App() {
           <Switch>
               {routes.authAbdu.map(item => {
                 return(
-                  <Route {...item} />
+                  <Route {...item} path={item.path} />
                 )
               })}  
           </Switch>
