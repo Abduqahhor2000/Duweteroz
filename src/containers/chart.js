@@ -34,7 +34,7 @@ export default class Chart extends PureComponent {
 
   render() {
     return (
-      <ResponsiveContainer width="100%" aspect={2.5}>
+      <ResponsiveContainer width="100%" aspect={2}>
         <LineChart
           width={300}
           height={100}
