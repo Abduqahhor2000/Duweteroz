@@ -1,0 +1,9 @@
+.sign-up-image{
+    height: 100vh;
+    background-color: bisque;
+    background-image: url(../img/signUpImage.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 8px;
+}

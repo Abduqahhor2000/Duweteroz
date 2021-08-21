@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Row, Col, Form, Input, Button } from "antd";
 import { auth } from '../configs/firebase';
 import "../style/signin.css";
-import Password from "antd/lib/input/Password";
-
+import { useDispatch } from "react-redux";
+import { addUserID } from "../store/actions/userIdAction";
+import { useHistory } from "react-router-dom";
 
 export default function SignIn () {
+    const dispatch = useDispatch();
+    const history = useHistory();
     const [state, setState] = useState({
         email: '',
         password: '',
@@ -26,9 +29,10 @@ export default function SignIn () {
     const handleLogin = async () => {
         try {
           const { email, password } = state;
-          // await auth.setPersistence('session');
           const authenticatedUser = await auth.signInWithEmailAndPassword(email, password);
           console.log(authenticatedUser);
+          dispatch(addUserID(authenticatedUser));
+          history.push("/balance");
         } catch (error) {
           console.log(error);
           setErrorMsg({ code: error.code, message: error.message })

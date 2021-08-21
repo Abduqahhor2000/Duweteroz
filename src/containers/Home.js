@@ -9,11 +9,20 @@ import { MdDashboard,
     FiSearch,
     GiHamburgerMenu,
    } from 'react-icons/all';
-import userImg from "../img/user-image.jpg";
 import { Redirect, Route, Switch, Link } from 'react-router-dom';
 import routes from '../routes';
+import { useDispatch, useSelector } from "react-redux";
+import { clearUserID } from "../store/actions/userIdAction";
 
 export default function Home () {
+  const userID = useSelector(state => state.user.token);
+  const user = useSelector(state => state.user.user);
+  const dispatch = useDispatch();
+
+  const signOutClick = () => {
+   dispatch( clearUserID() );
+  } 
+
     return (
        <div className="home">
              <div className="menu">
@@ -55,16 +64,23 @@ export default function Home () {
               <input type="text" placeholder="Search something..."/>
             </div>
             <div className="user-panel">
-              <div className="bell-icon">
-                <BsBell />
-              </div>
-              <div className="user-info">
-                <img src={userImg} className="user-image" alt=""></img>
-                <div className="user-name">
-                  <p>Abduqahhor Norimmatov</p>
-                  <p>Admin</p>
-                </div>
-              </div>
+              {
+                (userID) ? <><div className="bell-icon">
+                              <BsBell />
+                            </div>
+                            <div className="user-info">
+                              <img src={user.userImg} className="user-image" alt=""></img>
+                              <div className="user-name">
+                                <p>{user.firstName} {user.lastName}</p>
+                                <p>{user.isAdmin ? "Admin" : "Customer"} <button onClick={signOutClick} className="sign-out">Sign Out</button></p>
+                              </div>
+                            </div></> :
+                            <>
+                            <Link className="sign sign-in" to="/sign-in"> Sign In </Link>
+                            <Link className="sign sign-up" to="/sign-up"> Sign Up </Link>
+                            </>
+              }
+             
             </div>
           </div>
           <Redirect to="/balance" />

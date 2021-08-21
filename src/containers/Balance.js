@@ -5,6 +5,10 @@ import {FaRegCalendarAlt,
 import "../style/balance.css"
 
 export default function Balance() {
+  const date = new Date();
+  const dateMonth = (date.getMonth() + 1) > 9  ? `${date.getMonth() + 1}` : `0${date.getMonth() + 1}`;
+  const dateDate =  date.getDate() > 9  ? `${date.getDate()}` : `0${date.getDate()}`;
+  const dateString = `${dateDate}/${dateMonth}/${date.getFullYear()}`;
     return(
         <div className="mean-body">
         <div className="balance-title">
@@ -15,7 +19,7 @@ export default function Balance() {
          <div className="balance-details">
            <div className="balance-details-div">
              <span>BALANCE DETAILS</span>
-             <button><FaRegCalendarAlt className="calendar-icon" />18/09/2021</button>
+             <button><FaRegCalendarAlt className="calendar-icon" />{dateString}</button>
            </div>
            <div className="total-balance">
              <p>Total balance</p>
@@ -43,7 +47,7 @@ export default function Balance() {
          <div className="bills">
            <div className="bills-div">
              <span>BILLS</span>
-             <button><FaRegCalendarAlt className="calendar-icon" />18/09/2021</button>
+             <button><FaRegCalendarAlt className="calendar-icon" />{dateString}</button>
            </div>
              <p className="bills-p">You have 56 unpaid bills this month, Pay immediately before it's too late</p>
            <div className="will-pay">
