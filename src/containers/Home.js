@@ -31,7 +31,7 @@ export default function Home () {
               <div></div>
               <div></div>
             </span>
-            <h2>Duweteroz</h2>
+            <h2>Dream Dental</h2>
           </div>
           <div className="menu-list">
               <ul>
@@ -69,9 +69,9 @@ export default function Home () {
                               <BsBell />
                             </div>
                             <div className="user-info">
-                              <img src={user.userImg} className="user-image" alt=""></img>
+                              <img src={user.photoURL} className="user-image" alt=""></img>
                               <div className="user-name">
-                                <p>{user.firstName} {user.lastName}</p>
+                                <p>{user.displayName}</p>
                                 <p>{user.isAdmin ? "Admin" : "Customer"} <button onClick={signOutClick} className="sign-out">Sign Out</button></p>
                               </div>
                             </div></> :
