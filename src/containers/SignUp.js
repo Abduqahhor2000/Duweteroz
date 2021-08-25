@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col, Form, Input, Button } from "antd";
-import { auth, db } from '../configs/firebase';
+import { auth, db, storage } from '../configs/firebase';
 import "../style/signup.css";
 import { useDispatch } from "react-redux";
 import { addUserID } from "../store/actions/userIdAction";
@@ -41,47 +41,76 @@ export default function SignUp () {
         console.log(user);
     }
 
-    const handleLogin = (e) => {
-      e.preventDefault();
-          const { email, password } = user;
-          auth.createUserWithEmailAndPassword(email, password)
-          .then((userCredential) => { 
-            const userID = userCredential.user.uid;
+    // const handleLogin = (e) => {
+    //   e.preventDefault();
+    //       const { email, password } = user;
+    //       auth.createUserWithEmailAndPassword(email, password)
+    //       .then((userCredential) => { 
+    //         const userID = userCredential.user.uid;
 
-            db.ref(`users/${userID}/photo/profilePhoto.jpg`).put(url).then(() => {
-              console.log("successful upload photo!");
+    //         storage.ref(`users/${userID}/photo/profilePhoto.jpg`).put(url).then(() => {
+    //           console.log("successful upload photo!");
               
-              auth.onAuthStateChanged(user => {
-                db.ref(`users/${user.uid}/photo/profilePhoto.jpg`).getDownloadURL()
-                .then((photoURL) => {
-                  auth.currentUser.updateProfile({
+    //           auth.onAuthStateChanged(user => {
+    //             storage.ref(`users/${user.uid}/photo/profilePhoto.jpg`).getDownloadURL()
+    //             .then((photoURL) => {
+    //               auth.currentUser.updateProfile({
+    //                 displayName: user.displayName,
+    //                 photoURL: "salom",
+    //                 phoneNumber: user.phoneNumber,
+    //               }).then(() => {
+    //                 console.log("updateProfile")
+
+    //                 dispatch(addUserID(userCredential));
+    //                 history.push("/balance");
+
+    //               }).catch((error) => {
+    //                 console.log("updateProfile Error", error)
+    //               });  
+    //             }).catch((error) => {
+    //               console.log("dowload image url Error", error);
+    //             })
+    //           });
+    
+    //         }).catch(error => {
+    //            console.log("uploadImage Error", error)
+    //         });
+
+    //       })
+    //       .catch((error) => {
+    //         console.log("createUser Error", error);
+    //         // setErrorMsg({code: error.code, massega: error.message})
+    //       }); 
+    //   } 
+
+
+    const handleLogin = async (e) => {
+      e.preventDefault(); 
+      try{
+        const { email, password } = user;
+        const newCreatedUser = await auth.createUserWithEmailAndPassword(email, password);
+        console.log("newCreatedUser", newCreatedUser);
+        const      newUserID = newCreatedUser.user.uid;
+        console.log("newUserID", newUserID);
+        const uploadedPhoto = await storage.ref(`users/${newUserID}/photo/profilePhoto.png`).put(url);
+        console.log("upload photo", uploadedPhoto);
+        const photoURL = await uploadedPhoto.ref.getDownloadURL();
+        
+        // const photoURL = await storage.ref(`users/${newUserID}}/photo/profilePhoto.jpg`).getDownloadURL();
+        console.log("photoURL", photoURL);
+        const dcjeec =  await auth.currentUser.updateProfile({
                     displayName: user.displayName,
                     photoURL: photoURL,
                     phoneNumber: user.phoneNumber,
-                  }).then(() => {
-                    console.log("updateProfile")
+                  });      
+        dispatch(addUserID(newCreatedUser));
+        history.push("/balance");
 
-                    dispatch(addUserID(userCredential));
-                    history.push("/balance");
-                    
-                  }).catch((error) => {
-                    console.log("updateProfile Error", error)
-                  });  
-                }).catch((error) => {
-                  console.log("dowload image url Error", error);
-                })
-              });
-    
-            }).catch(error => {
-               console.log("uploadImage Error", error)
-            });
-
-          })
-          .catch((error) => {
-            console.log("createUser Error", error);
-            // setErrorMsg({code: error.code, massega: error.message})
-          }); 
-      } 
+      }catch(error){
+        console.log(error);
+      }
+    }  
+  
 
       const {email, password, displayName, phoneNumber} = user;
     return(
@@ -141,6 +170,7 @@ export default function SignUp () {
                         ]}
                       >
                         <Input
+                              type="number"
                               name="phoneNumber"
                               value={user.phoneNumber}
                               onChange={hendlerInputChange} 
