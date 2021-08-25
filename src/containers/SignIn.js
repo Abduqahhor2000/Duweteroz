@@ -13,10 +13,10 @@ export default function SignIn () {
         email: '',
         password: '',
     });
-    const [errorMsg, setErrorMsg] = useState({
-        code: "",
-        massega: "",
-    });
+    // const [errorMsg, setErrorMsg] = useState({
+    //     code: "",
+    //     massega: "",
+    // });
 
     const hendlerInputChange = (e) => {
         const {name, value} = e.target;
@@ -35,7 +35,7 @@ export default function SignIn () {
           history.push("/balance");
         } catch (error) {
           console.log(error);
-          setErrorMsg({ code: error.code, message: error.message })
+          // setErrorMsg({ code: error.code, message: error.message })
         }
       } 
       const {email, password} = state;

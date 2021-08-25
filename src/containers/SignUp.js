@@ -16,10 +16,11 @@ export default function SignUp () {
         email: '',
         password: '',
     });
-    const [errorMsg, setErrorMsg] = useState({
-        code: "",
-        message: "",
-    });
+    // const [userID, setUserID] = useState();
+    // const [errorMsg, setErrorMsg] = useState({
+    //     code: "",
+    //     message: "",
+    // });
     const [url, setUrl] = useState("https://firebasestorage.googleapis.com/v0/b/dentist-test-app.appspot.com/o/placeholder-image.jpg?alt=media&token=9da37c26-a05f-4bad-a3a7-c8ce94c57044");
 
     const chooseImageHendler = (e) => {
@@ -49,27 +50,36 @@ export default function SignUp () {
 
             db.ref(`users/${userID}/photo/profilePhoto.jpg`).put(url).then(() => {
               console.log("successful upload photo!");
+              
+              auth.onAuthStateChanged(user => {
+                db.ref(`users/${user.uid}/photo/profilePhoto.jpg`).getDownloadURL()
+                .then((photoURL) => {
+                  auth.currentUser.updateProfile({
+                    displayName: user.displayName,
+                    photoURL: photoURL,
+                    phoneNumber: user.phoneNumber,
+                  }).then(() => {
+                    console.log("updateProfile")
 
-              auth.currentUser.updateProfile({
-                displayName: user.displayName,
-                photoURL: user.url,
-                phoneNumber: user.phoneNumber,
-              }).then(() => {
-                console.log("updateProfile")
-              }).catch((error) => {
-                console.log("updateProfile Error", error)
-              });  
-
+                    dispatch(addUserID(userCredential));
+                    history.push("/balance");
+                    
+                  }).catch((error) => {
+                    console.log("updateProfile Error", error)
+                  });  
+                }).catch((error) => {
+                  console.log("dowload image url Error", error);
+                })
+              });
+    
             }).catch(error => {
                console.log("uploadImage Error", error)
             });
 
-            dispatch(addUserID(userCredential));
-            history.push("/balance");
           })
           .catch((error) => {
             console.log("createUser Error", error);
-            setErrorMsg({code: error.code, massega: error.message})
+            // setErrorMsg({code: error.code, massega: error.message})
           }); 
       } 
 
