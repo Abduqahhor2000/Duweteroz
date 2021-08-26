@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col, Form, Input, Button } from "antd";
-import { auth, db, storage } from '../configs/firebase';
+import { auth, storage } from '../configs/firebase';
 import "../style/signup.css";
 import { useDispatch } from "react-redux";
 import { addUserID } from "../store/actions/userIdAction";
@@ -12,7 +12,6 @@ export default function SignUp () {
     const history = useHistory();
     const [user, setUser] = useState({
         displayName: "",
-        phoneNumber: "",
         email: '',
         password: '',
     });
@@ -21,13 +20,15 @@ export default function SignUp () {
     //     code: "",
     //     message: "",
     // });
-    const [url, setUrl] = useState("https://firebasestorage.googleapis.com/v0/b/dentist-test-app.appspot.com/o/placeholder-image.jpg?alt=media&token=9da37c26-a05f-4bad-a3a7-c8ce94c57044");
-
+    const [signUpUserPhoto, setSignUpUserPhoto] = useState("https://firebasestorage.googleapis.com/v0/b/dentist-test-app.appspot.com/o/placeholder-image.jpg?alt=media&token=9da37c26-a05f-4bad-a3a7-c8ce94c57044");
+    const [userPhotoFile, setUserPhotoFile] = useState({});
+    
     const chooseImageHendler = (e) => {
+        setUserPhotoFile(e.target.files[0]);
         const reader = new FileReader();
         reader.onload = () =>{
           if(reader.readyState === 2){
-            setUrl(reader.result);
+            setSignUpUserPhoto(reader.result);
           }
         }
         reader.readAsDataURL(e.target.files[0])
@@ -92,7 +93,7 @@ export default function SignUp () {
         console.log("newCreatedUser", newCreatedUser);
         const      newUserID = newCreatedUser.user.uid;
         console.log("newUserID", newUserID);
-        const uploadedPhoto = await storage.ref(`users/${newUserID}/photo/profilePhoto.png`).put(url);
+        const uploadedPhoto = await storage.ref(`users/${newUserID}/photo/profilePhoto.png`).put(userPhotoFile);
         console.log("upload photo", uploadedPhoto);
         const photoURL = await uploadedPhoto.ref.getDownloadURL();
         
@@ -109,8 +110,7 @@ export default function SignUp () {
       }catch(error){
         console.log(error);
       }
-    }  
-  
+    }
 
       const {email, password, displayName, phoneNumber} = user;
     return(
@@ -120,7 +120,7 @@ export default function SignUp () {
             <Col className="sign-in-right" span={12} justify="center"  align="middle" >           
               <Row className="sign-up-form">
                 <Col className="user-img" span={14} style={{alignSelf: "flex-end"}}>
-                  <div style={{backgroundImage: `url(${url})`}} className="user-photo">
+                  <div style={{backgroundImage: `url(${signUpUserPhoto})`}} className="user-photo">
                     <span className="file-span">
                       <label className="file-label" htmlFor="file"> <MdPhotoCamera /></label>
                       <input className="photo-file" onChange={chooseImageHendler} name="file" id="file" type="file"></input>
@@ -156,24 +156,6 @@ export default function SignUp () {
                          value={user.displayName}
                          onChange={hendlerInputChange} 
                          addonBefore="@"
-                        />
-                      </Form.Item>
-                
-                      <Form.Item
-                        name="phoneNumber"
-                        label="Phone Number"
-                        rules={[
-                          {
-                            required: false,
-                            message: 'Please input your password!',
-                          },
-                        ]}
-                      >
-                        <Input
-                              type="number"
-                              name="phoneNumber"
-                              value={user.phoneNumber}
-                              onChange={hendlerInputChange} 
                         />
                       </Form.Item>
                             
@@ -219,7 +201,7 @@ export default function SignUp () {
                           span: 16,
                         }}
                       >
-                        <Button disabled={!(email) || !(password) || !(phoneNumber) || !(displayName)} onClick={handleLogin}>
+                        <Button disabled={!(email) || !(password) || !(displayName)} onClick={handleLogin}>
                           Submit
                         </Button>
                       </Form.Item>

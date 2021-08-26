@@ -15,7 +15,7 @@ const firebaseConfig = {
   measurementId: "G-0XQBRKP5WM"
 };
   const app = firebase.initializeApp(firebaseConfig);
-  const storage = firebase.app().storage("gs://dentist-test-app.appspot.com");
+  const storage = firebase.storage();
   const auth = firebase.auth();
   const db = firebase.firestore();
   
