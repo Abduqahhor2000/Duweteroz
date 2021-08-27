@@ -1,5 +1,5 @@
 import React from "react";
-import Chart from './Chart';
+import Chart from './Chart.js';
 import {FaRegCalendarAlt,
         SiVisa} from 'react-icons/all';
 import "../style/balance.css"
