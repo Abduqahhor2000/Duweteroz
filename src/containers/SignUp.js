@@ -103,7 +103,8 @@ export default function SignUp () {
                     displayName: user.displayName,
                     photoURL: photoURL,
                     phoneNumber: user.phoneNumber,
-                  });      
+                  }); 
+        console.log(dcjeec);     
         dispatch(addUserID(newCreatedUser));
         history.push("/balance");
 
@@ -112,7 +113,7 @@ export default function SignUp () {
       }
     }
 
-      const {email, password, displayName, phoneNumber} = user;
+      const {email, password, displayName} = user;
     return(
         <div>
           <Row>
